@@ -30,7 +30,7 @@ public class ScreenShot {
 	public void captureScreenShot(){
 		
 		// to be changed 
-		String path = "C:\\Users\\Naveen\\Desktop\\screenshots\\";
+		String path = "C:\\Users\\SIVAKUMARVISWABARATH\\Documents\\Screenshots\\Screenshots";
 		String fileName ="";
 
 		GregorianCalendar calendar = new GregorianCalendar(); 
@@ -52,7 +52,7 @@ public class ScreenShot {
 			TakesScreenshot takeScreenShot  = (TakesScreenshot) driver; 
 			File file = takeScreenShot.getScreenshotAs(OutputType.FILE);
 			
-			FileUtils.copyFile(file, new File(path +fileName));
+			FileUtils.copyFile(file, new File(path+fileName));
 		} catch (WebDriverException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -66,7 +66,7 @@ public class ScreenShot {
 
 	public void captureScreenShot(String fileName){
 		
-		String path =  "C:\\Users\\Naveen\\Desktop\\screenshots\\";
+		String path =  "C:\\Users\\SIVAKUMARVISWABARATH\\Documents\\Screenshots";
 	
 		// 1. create file 
 		// 2. capture screenshot from selenium 
@@ -77,6 +77,7 @@ public class ScreenShot {
 			File file = takeScreenShot.getScreenshotAs(OutputType.FILE);
 			
 			FileUtils.copyFile(file, new File(path +fileName+".png"));
+			System.out.println("screenshot taken");
 		} catch (WebDriverException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
