@@ -71,26 +71,11 @@ public class RETC_43 {
 		
 		//3. Enter valid credentials in Enter Title Here textbox		
 		driver.findElement(By.xpath("//input[@id='title']")).sendKeys("SIVAKUMAR");
-				
-		
-		//Reading data from external File(Data Driven method)
-	/*	String Testdatasheet;
-		FileInputStream fis = new FileInputStream("C:\\Users\\SIVAKUMARVISWABARATH\\Documents\\Testdata\\Input Data.xlsx");			
-		XSSFWorkbook wb = new XSSFWorkbook(fis);
-		XSSFSheet sheet = wb.getSheetAt(0);
-		int rowCount=7, colCount=2;
-		for(int i=0;i<=rowCount;i++)
-		{ for(int i=0;i<=colCount;i++){ } 
-		}
-	*/			
+						
 		//4. Enter valid credentials in textbox
-		//driver.findElement(By.xpath("//a[contains(text(),' Log In / Register')]")).click();;
 		driver.findElement(By.xpath("//textarea[@id='content']")).sendKeys("VISWABARATHI");
 				
-		//5. Click on Publish button
-		/*driver.findElement(By.xpath("//input[@id='publish']")).click();
-		driver.findElement(By.xpath("//input[@id='publish']")).click();*/
-		
+		//5. Click on Publish button			
 		WebElement element = driver.findElement(By.xpath("//input[@id='publish' and @class='button button-primary button-large']"));
 		JavascriptExecutor executor = (JavascriptExecutor)driver;
 		executor.executeScript("arguments[0].click();", element);

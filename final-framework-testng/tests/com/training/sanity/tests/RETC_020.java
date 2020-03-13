@@ -47,8 +47,7 @@ public class RETC_020 {
 		// open the browser 
 		driver.get(baseUrl);
 	}
-	
-	
+		
 	@Test
 	public void validLoginTest() throws InterruptedException {
 		//RETC_020
@@ -70,17 +69,7 @@ public class RETC_020 {
 		
 		//3. Enter Valid Credentials in Name textbox		
 		driver.findElement(By.xpath("//input[@id='tag-name']")).sendKeys("SIVAKUMAR");
-				
-		
-		//Reading data from external File(Data Driven method)
-		//String Testdatasheet;
-		//FileInputStream fis = new FileInputStream(Testdatasheet, “C:\\Users\\SIVAKUMARVISWABARATH\\Documents\\Testdataxls.”);			
-		//XSSFWorkbook wb = new XSSFWorkbook(fis);
-		//XSSFSheet sheet = wb.getSheetAt(0);
-		//for(int i=0;i<=rowCount;i++)
-		//{ for(int i=0;i<=colCount;i++){ } 
-		//}
-				
+						
 		//4. Enter Valid Credentials in Slug textbox
 		//driver.findElement(By.xpath("//a[contains(text(),' Log In / Register')]")).click();;
 		driver.findElement(By.xpath("//input[@id='tag-slug']")).sendKeys("VISWABARATHI");
@@ -88,6 +77,7 @@ public class RETC_020 {
 		//5. Enter Valid Credentials in Description textbox
 		driver.findElement(By.xpath("//textarea[@id='tag-description']")).sendKeys("Technology begins Here");
 		screenShot.captureScreenShot();
+		
 		//6. Click on Add New Tag button
 		driver.findElement(By.xpath("//input[@id='submit']")).click();
 		screenShot.captureScreenShot();

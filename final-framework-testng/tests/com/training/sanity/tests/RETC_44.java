@@ -71,17 +71,6 @@ public class RETC_44 {
 		//3. Enter Valid Credentials in Name textbox	
 		driver.findElement(By.xpath("//input[@id='tag-name']")).sendKeys("New Launches");
 				
-		
-		//Reading data from external File(Data Driven method)
-	/*	String Testdatasheet;
-		FileInputStream fis = new FileInputStream("C:\\Users\\SIVAKUMARVISWABARATH\\Documents\\Testdata\\Input Data.xlsx");			
-		XSSFWorkbook wb = new XSSFWorkbook(fis);
-		XSSFSheet sheet = wb.getSheetAt(0);
-		int rowCount=7, colCount=2;
-		for(int i=0;i<=rowCount;i++)
-		{ for(int i=0;i<=colCount;i++){ } 
-		}
-	*/			
 		//4.Enter Valid Credentials in Slug textbox
 		driver.findElement(By.xpath("//input[@id='tag-slug']")).sendKeys("launch");
 				
@@ -95,25 +84,11 @@ public class RETC_44 {
 					
 		//7. Click on Add New Feature button
 		driver.findElement(By.xpath("//input[@id='submit']")).click();
-		
-		//7. Click on Add new link of Properties section--Given testcase(seems to be wrong sequence)
-		//action.moveToElement(Properties).moveToElement(driver.findElement(By.xpath("//a[@href='post-new.php?post_type=property']"))).click().build().perform();
-		
-		
-		//8. Enter valid credentials in Enter Title Here textbox-Given testcase(seems to be wrong sequence)
-		//driver.findElement(By.xpath("//input[@id='title']")).sendKeys("SIVAKUMAR");
-		
-		//9. Enter valid credentials in textbox---Given testcase(seems to be wrong sequence)
-		//driver.findElement(By.xpath("//textarea[@id='content']")).sendKeys("VISWABARATHI");
-		
-		//8. Click on checkbox beside added Feature of Features section
-		//driver.findElement(By.xpath("(//input[@name='delete_tags[]'])[1]")).click();
-		//driver.findElement(By.xpath("(//td[@data-colname='Slug'] and ")).click();
-		//driver.findElement(By.xpath("(//input[@id='cb-select-930' and @class='name column-name has-row-actions column-primary'])"));
-		
+				
 		 WebElement  ele1=driver.findElement(By.xpath("(//input[@id='cb-select-930' and @class='name column-name has-row-actions column-primary'])"));
 		 ele1.click();				
 		screenShot.captureScreenShot();
+		
 						
 	}
 	

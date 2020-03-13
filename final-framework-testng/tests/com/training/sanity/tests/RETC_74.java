@@ -4,6 +4,9 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
+import javax.imageio.stream.FileImageInputStream;
+
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -20,7 +23,7 @@ import com.training.pom.LoginPOM;
 import com.training.utility.DriverFactory;
 import com.training.utility.DriverNames;
 
-public class RETC_019 {
+public class RETC_74 {
 
 	private WebDriver driver;
 	private String baseUrl;
@@ -44,11 +47,13 @@ public class RETC_019 {
 		// open the browser 
 		driver.get(baseUrl);
 	}
-		
+	
+	
 	@Test
 	public void validLoginTest() throws InterruptedException {
+		//RETC_074
 		
-		//Scenario:To Verify whether application allows admin to delete category from the categories page
+		//Scenario: To Verify whether application allows admin to add new tag
 		driver.findElement(By.xpath("//a[contains(text(),' Log In / Register')]")).click();;
 		loginPOM.sendUserName("admin");
 		loginPOM.sendPassword("admin@123");
@@ -56,36 +61,31 @@ public class RETC_019 {
 		//screenShot.captureScreenShot();
 		//Thread.sleep(2000);
 		
+		//1. Click on Users link and 2. Click on All Users link
 		Actions action=new Actions(driver);
-		WebElement posts=driver.findElement(By.xpath("//div[contains(text(),'Posts')]"));
-		WebElement categories=driver.findElement(By.xpath("//a[@href='edit-tags.php?taxonomy=category']"));
-		
-		//1. Click on Posts link and 2. Click on Tags link
-		action.moveToElement(posts).moveToElement(categories).click().build().perform();
+		WebElement Users=driver.findElement(By.xpath("//*[@id='menu-users']/a/div[3]"));
+		WebElement AllUSers=driver.findElement(By.xpath("//*[@id='menu-users']/ul/li[2]/a"));
+		action.moveToElement(Users).moveToElement(AllUSers).click().build().perform();
 		screenShot.captureScreenShot();
 		
-		// 3. Click on the checkbox of the category to be deleted
-		driver.findElement(By.xpath("(//input[@name='delete_tags[]'])[1]")).click();
-		screenShot.captureScreenShot();
-		String name_to_be_deleted=driver.findElement(By.xpath("(//td[@class='name column-name has-row-actions column-primary'])[1]")).getText();
+		//3. Click on the checkbox beside the user	
+		driver.findElement(By.xpath("//*[@id='user_566']")).click();
 		
-		//4. Click on Bulk Action list box and 5. Select Delete in Bulk Action links
-		Select dropdown=new Select(driver.findElement(By.xpath("//select[@id='bulk-action-selector-top']")));
-		dropdown.selectByVisibleText("Delete");
+		//4.Click on Change role to list box and 5.Select valid credentials in change role to list box
+		Select Changerole=new Select(driver.findElement(By.xpath("//*[@id='new_role']")));
+		Changerole.selectByVisibleText("Shop manager");
 		screenShot.captureScreenShot();
 		
-		//6. Click on Apply button
-		driver.findElement(By.xpath("//input[@id='doaction']")).click();
-		screenShot.captureScreenShot();
+		//6. Click on Change button
 		
-		// Verification of delete Message 
-		String actualMessage=driver.findElement(By.xpath("//div[@id='message']/p")).getText();
-		Assert.assertEquals(actualMessage, "Categories deleted.");
-		String name_after_deletion=driver.findElement(By.xpath("(//td[@class='name column-name has-row-actions column-primary'])[1]")).getText();
-		boolean condn=name_to_be_deleted.equalsIgnoreCase(name_after_deletion);
-		Assert.assertFalse(condn);
-	
-	}
+		driver.findElement(By.xpath("//*[@id=\'changeit\']")).click();
+		
+		//Verification of "changed roles" Message
+		String actualMessage=driver.findElement(By.xpath("//*[@id='message']/p")).getText();
+		Assert.assertEquals(actualMessage, "Changed roles.");
+		
+					
+			}
 	
 	@AfterMethod
 	public void tearDown() throws Exception {
